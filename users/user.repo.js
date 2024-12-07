@@ -2,6 +2,7 @@ const prisma = require('../database/index.js')
 
 const findUser = async () => {
     const user = await prisma.user.findMany()
+    console.log(user)
     return user;
 }
 
