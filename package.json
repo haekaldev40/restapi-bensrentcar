@@ -6,13 +6,14 @@
   "scripts": {
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "build": "prisma generate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^5.14.0",
+    "@prisma/client": "^5.22.0",
     "bcrypt": "^5.1.1",
     "bull": "^4.15.1",
     "cors": "^2.8.5",
@@ -28,7 +29,7 @@
     "nodemon": "^3.1.0",
     "pdfkit": "^0.15.0",
     "pdfkit-table": "^0.1.99",
-    "prisma": "^5.14.0",
+    "prisma": "^5.22.0",
     "socket.io": "^4.7.5"
   }
 }
