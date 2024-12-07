@@ -1,0 +1,6 @@
+Nama Mobil: Avanza Veloz
+Start Date: Fri Aug 30 2024 07:00:00 GMT+0700 (Indochina Time)
+End Date: Sat Aug 31 2024 07:00:00 GMT+0700 (Indochina Time)
+Duration: 1 days
+Harga Sewa: 375000
+Total Harga Sewa: 375000

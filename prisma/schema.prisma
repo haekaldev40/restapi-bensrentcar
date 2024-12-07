@@ -1,0 +1,104 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  admin_id Int @id @default(autoincrement())
+  name String
+  email String
+  password String
+}
+
+model Cars {
+  car_id Int @id @default(autoincrement())
+  title String
+  model String
+  fuel String
+  capacity String
+  transimisi String
+  year Int
+  color String
+  price Int
+  no_plat String
+  imageUrl String
+  status CarStatus @default(Available)
+  booking Booking[]
+  maintenance Maintenance[]
+}
+
+model User {
+  user_id Int @id @default(autoincrement())
+  name String
+  email String @unique
+  password String
+  role UserRole @default(User)
+  booking Booking[]
+}
+
+model Destinations {
+  destinations_id Int @id @default(autoincrement())
+  name String
+  price Int
+}
+
+
+model Booking {
+  booking_id Int @id @default(autoincrement())
+  car_id Int 
+  car Cars @relation(fields: [car_id], references: [car_id])
+  user_id Int
+  user User @relation(fields: [user_id], references: [user_id])
+  start_date DateTime
+  end_date DateTime
+  return_date DateTime?
+  duration Int
+  total_price Float
+  status BookingStatus @default(Pending)
+  status_pelunasan String @default("Pending")
+  charge Float?
+  payment Payment[]
+}
+
+model Payment { 
+  payment_id Int @id @default(autoincrement())
+  booking_id Int
+  booking Booking @relation(fields: [booking_id], references: [booking_id])
+  img_transcation String
+  img_ktp String
+  img_sim String
+  status_pembayaran String @default("Belum Lunas")
+}
+
+model Maintenance {
+  maintenance_id Int @id @default(autoincrement())
+  car_id Int 
+  car Cars @relation(fields: [car_id], references: [car_id])
+  description String
+  maintenance_date DateTime
+  cost Float
+}
+
+enum BookingStatus {
+  Success
+  Pending
+  Cancel
+}
+
+enum CarStatus {
+  Available
+  Unavailable
+}
+
+enum UserRole {
+  User
+  Admin
+}
+
+
+
